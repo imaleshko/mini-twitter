@@ -1,13 +1,19 @@
 <h1>Вхід</h1>
 
 <%= form_with url: login_path do |f| %>
-  <div>
-    <%= f.label :username, "Ім'я" %>
+  <% if flash[:alert] %>
+    <div>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :username, "Ім'я:" %>
     <%= f.text_field :username, required: true %>
   </div>
 
-  <div>
-    <%= f.label :password, "Пароль" %>
+  <div style="margin-bottom: 15px;">
+    <%= f.label :password, "Пароль:" %>
     <%= f.password_field :password, required: true %>
   </div>
 

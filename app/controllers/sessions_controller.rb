@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash.now[:alert] = "Invalid username or password"
-      render :new
+      flash.now[:alert] = "Неправильне ім'я користувача або пароль"
+      render :new, status: :unprocessable_entity
     end
   end
 

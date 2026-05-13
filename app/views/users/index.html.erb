@@ -1,10 +1,10 @@
 <h1>Усі користувачі</h1>
 
 <% @users.each do |user| %>
-  <div>
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
     <%= user.username %>
 
-    <div>
+    <div style="display: flex; align-items: center; gap: 10px;">
       <% if current_user.followees.include?(user) %>
         <%= button_to "Відписатися", unfollow_path(user), method: :delete %>
       <% else %>

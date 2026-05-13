@@ -1,12 +1,14 @@
 <h1>Чат з <%= @receiver.username %></h1>
 
-<%= link_to "Назад", users_path %>
-
 <div>
   <% @messages.each do |message| %>
-    <%= message.sender.username %>
-    <%= message.body %>
-    <%= message.created_at.strftime("%d.%m.%Y %H:%M") %>
+    <div style="max-width: 400px; margin: 10px; padding: 10px; border: 1px solid black; border-radius: 5px;">
+      <%= message.sender.username %>
+      <%= message.created_at.strftime("%d.%m.%Y %H:%M") %>
+      <div style="margin-top: 5px;">
+        <%= message.body %>
+      </div>
+    </div>
   <% end %>
 </div>
 
