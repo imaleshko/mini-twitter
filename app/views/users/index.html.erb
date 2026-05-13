@@ -1,2 +1,17 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Усі користувачі</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <%= user.username %>
+
+    <div>
+      <% if current_user.followees.include?(user) %>
+        <%= button_to "Відписатися", unfollow_path(user), method: :delete %>
+      <% else %>
+        <%= button_to "Підписатися", follow_path(user), method: :post %>
+      <% end %>
+
+      <%= link_to "Написати", chat_path(user) %>
+    </div>
+  </div>
+<% end %>

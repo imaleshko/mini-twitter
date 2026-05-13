@@ -24,6 +24,24 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to "Головна", root_path %>
+      <% if logged_in? %>
+        <%= link_to "Користувачі", users_path %>
+        <%= current_user.username %>
+        <%= button_to "Вийти", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Увійти", login_path %>
+        <%= link_to "Реєстрація", signup_path %>
+      <% end %>
+    </nav>
+
+    <% if flash.alert %>
+      <div>
+        <%= flash.alert %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

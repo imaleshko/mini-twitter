@@ -1,2 +1,14 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Стрічка</h1>
+
+<%= form_with model: @post do |f| %>
+  <%= f.text_area :content, placeholder: "Напишіть своє повідомлення", required: true %>
+  <%= f.submit "Опублікувати" %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= post.user.username %>
+    <%= post.created_at %>
+    <%= post.content %>
+  </div>
+<% end %>

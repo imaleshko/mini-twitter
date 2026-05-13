@@ -1,0 +1,16 @@
+<h1>Чат з <%= @receiver.username %></h1>
+
+<%= link_to "Назад", users_path %>
+
+<div>
+  <% @messages.each do |message| %>
+    <%= message.sender.username %>
+    <%= message.body %>
+    <%= message.created_at.strftime("%d.%m.%Y %H:%M") %>
+  <% end %>
+</div>
+
+<%= form_with model: @new_message, url: chat_path(@receiver) do |f| %>
+  <%= f.text_area :body, placeholder: "Напишіть своє повідомлення", required: true %>
+  <%= f.submit "Надіслати" %>
+<% end %>
